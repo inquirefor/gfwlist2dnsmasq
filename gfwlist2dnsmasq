@@ -1,8 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 
 # Desc: convert gfwlist.txt into dnsmasq.conf
 # Dependency: base64, curl(https support), perl5 v5.10.0+
-# Usage: sh gfwlist2dnsmasq [-s <addr>] [-p <port>] [-n <name>] [-l]
+# Usage: bash gfwlist2dnsmasq [-s <addr>] [-p <port>] [-n <name>] [-l]
 #        -s <addr>  dns server addr for resolve gfwlist domain. (default: 127.0.0.1)
 #        -p <port>  dns server port for resolve gfwlist domain. (default: 60053)
 #        -n <name>  which ipset will be saved the IP. (resolved from gfwlist domain)
@@ -24,7 +24,7 @@ while getopts ":s:p:n:lh" OPT; do
         n) set_name="$OPTARG";;
         l) dom_list="true";;
         h) cat << EOF
-Usage: sh gfwlist2dnsmasq [-s <addr>] [-p <port>] [-n <name>] [-l]
+Usage: bash gfwlist2dnsmasq [-s <addr>] [-p <port>] [-n <name>] [-l]
  -s <addr>  dns server addr for resolve gfwlist domain. (default: 127.0.0.1)
  -p <port>  dns server port for resolve gfwlist domain. (default: 60053)
  -n <name>  which ipset will be saved the IP. (resolved from gfwlist domain)

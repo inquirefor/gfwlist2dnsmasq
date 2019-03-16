@@ -43,7 +43,7 @@ done
 test -z "$dom_list" && temporary_file=$(mktemp) || temporary_file='domain_list.txt'
 
 # convert gfwlist.txt
-curl -4sSkL https://raw.github.com/gfwlist/gfwlist/master/gfwlist.txt | base64 -d | { perl -pe '
+curl -4sSkL https://raw.github.com/gfwlist/gfwlist/master/gfwlist.txt | base64 --decode | { perl -pe '
 if (/URL Keywords/i) { $null = <> until $null =~ /^!/ }
 s#^\s*+$|^!.*+$|^@@.*+$|^\[AutoProxy.*+$|^/.*/$##i;
 s@^\|\|?|\|$@@;

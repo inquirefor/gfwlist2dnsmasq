@@ -11,9 +11,3 @@
 - `-n <name>`：将解析到的 IP 地址存放至指定的 ipset，如果未指定，则不生成 ipset 选项
 - `-l`：生成 gfwlist 域名列表，而非 dnsmasq 配置文件，指定此选项时其它选项将被忽略
 - `-h`：查看 gfwlist2dnsmasq 脚本的帮助信息，然后退出脚本
-
-## 成品下载
-如果你没有运行 gfwlist2dnsmasq 脚本的条件，也可以从下面的 URL 获取它（6 小时更新一次）
-- gfwlist domain lists：https://zfl9.github.io/gfwlist2dnsmasq/domain_list.txt
-- dnsmasq without ipset：https://zfl9.github.io/gfwlist2dnsmasq/dnsmasq_gfwlist.conf
-- dnsmasq with ipset：https://zfl9.github.io/gfwlist2dnsmasq/dnsmasq_gfwlist_ipset.conf

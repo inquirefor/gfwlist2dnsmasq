@@ -16,14 +16,8 @@ command -v curl &>/dev/null || { echo "curl is not installed in this system" 1>&
 command -v perl &>/dev/null || { echo "perl is not installed in this system" 1>&2; exit 1; }
 command -v base64 &>/dev/null || { echo "base64 is not installed in this system" 1>&2; exit 1; }
 
-# parse command line
-while getopts ":s:p:n:lh" OPT; do
-    case $OPT in
-        s) dns_addr="$OPTARG";;
-        p) dns_port="$OPTARG";;
-        n) set_name="$OPTARG";;
-        l) dom_list="true";;
-        h) cat <<'EOF'
+help() {
+    cat <<'EOF'
 Usage: bash gfwlist2dnsmasq [-s <addr>] [-p <port>] [-n <name>] [-l]
  -s <addr>  dns server addr for resolve gfwlist domain. (default: 127.0.0.1)
  -p <port>  dns server port for resolve gfwlist domain. (default: 60053)
@@ -33,9 +27,18 @@ Usage: bash gfwlist2dnsmasq [-s <addr>] [-p <port>] [-n <name>] [-l]
             if this option is set, other options will be ignored.
  -h         show this help and exit.
 EOF
-exit;;
-        :)  echo "Missing argument to '-$OPTARG'" 1>&2; exit 1;;
-        \?) echo "Unknown option '-$OPTARG'" 1>&2;;
+}
+
+# parse command line
+while getopts ":s:p:n:lh" OPT; do
+    case $OPT in
+        s) dns_addr="$OPTARG";;
+        p) dns_port="$OPTARG";;
+        n) set_name="$OPTARG";;
+        l) dom_list="true";;
+        h) help; exit;;
+        :)  echo "Missing argument to '-$OPTARG'" 1>&2; help; exit 1;;
+        \?) echo "Unknown option '-$OPTARG'" 1>&2; help; exit 1;;
     esac
 done
 
